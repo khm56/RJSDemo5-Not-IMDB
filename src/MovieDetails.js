@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import illusionist from './illusionist.jpg'
 import data from './data'
 
 class MoviesDetails extends Component {

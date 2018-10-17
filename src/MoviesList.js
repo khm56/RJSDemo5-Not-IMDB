@@ -12,7 +12,7 @@ class MoviesList extends Component {
 			  <img className="card-img-top" style={{maxHeight: "200px", margin: "auto"}} src={movie.image} alt="Card image cap"/>
 			  <div className="card-body">
 			    <h5 className="card-title">{movie.name}</h5>
-			    <Link className="btn btn-outline-info" style={{backgroundColor: 'white'}} to={`/movie/${movie.id}`} params={{ movieId: movie.id }} >More Details</Link>
+			    <a href={`/movie/${movie.id}`} className="btn btn-outline-info" style={{backgroundColor: 'white'}} >More Details</a>
 			  </div>
 			</div>
 			)
