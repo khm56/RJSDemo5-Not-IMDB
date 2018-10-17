@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import data from "./data";
+import movies from "./data";
 
 class MyList extends Component {
   render() {
@@ -21,16 +21,16 @@ class MyList extends Component {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">{data[1].name}</th>
+              <th scope="row">{movies[1].name}</th>
               <td style={{ textAlign: "right" }}>Watched</td>
             </tr>
             <tr>
-              <th scope="row">{data[3].name}</th>
+              <th scope="row">{movies[3].name}</th>
               <td style={{ textAlign: "right" }}>Want to Watch</td>
             </tr>
 
             <tr>
-              <th scope="row">{data[4].name}</th>
+              <th scope="row">{movies[4].name}</th>
               <td style={{ textAlign: "right" }}>Want to Watch</td>
             </tr>
           </tbody>
