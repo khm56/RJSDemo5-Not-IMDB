@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MoviesList from './MoviesList'
+import MovieDetails from './MovieDetails'
+import MyList from './MyList'
+import data from './data'
+import { BrowserRouter as Router, Route, Link, Switch, Redirect, NavLink } from "react-router-dom";
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="bg-light" >
+        <nav className="navbar navbar-dark" style={{backgroundColor: "#3d585b"}}>
+          <a className="navbar-brand" href="/home">Not IMDB</a>
+          <div className="navbar">
+            <NavLink className="nav-item nav-link text-light" to="/movies">Home</NavLink>
+            <NavLink className="nav-item nav-link text-light" to="/mylist">My List</NavLink>
+          </div>
+        </nav>
+
+        <Switch>
+          <Route path="/not-found" render={props => <h1>Not found</h1>} />
+          <Route path="/movies" render={props => <MoviesList movies={data} />} />
+          <Route path="/movie/:movieId" render={props => <MovieDetails {...props}/>} />
+          <Route path="/mylist" component={MyList}/>
+          <Redirect to="/not-found" />
+
+        </Switch>
+        
+
+        
       </div>
+      
+        
+        
     );
   }
 }
