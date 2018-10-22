@@ -1,61 +1,138 @@
 presentation https://drive.google.com/file/d/1t23T8JKvvLETyPeXSaierahwElUf69Ff/view?usp=sharing
 
-1 - in index.js file, add the following
+0. Demonstrate the different components (`MyList`, `MovieList`, `MovieDetail`)
 
-    import { BrowserRouter } from 'react-router-dom';
-    ...
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>), document.getElementById('root'));
-    ...
+1. Create a Router
 
-2 - in App.js file add the route to mylist
+`index.js`
 
-    import {Route} from "react-router-dom";
-    ...
-    <Route path="/mylist" component={MyList}/>
-
-3 - change the following line and add the NavLink import
-
-    <a className="nav-item nav-link text-light" href="/mylist">My List</a>
-
-to
-
-    import {Route, NavLink} from "react-router-dom";
-    ...
-    <NavLink className="nav-item nav-link text-light" to="/mylist">My List</NavLink>
-
-4 - change the other link too
-  
- <NavLink className="nav-item nav-link text-light" to="/home">Home</NavLink>
-
-5 - add the switch and the route to home
-
-    import {Route, NavLink, switch} from "react-router-dom";
-
-    <Switch>
-          <Route path="/home" render={props => <MoviesList movies={data} />} />
-          <Route path="/mylist" component={MyList}/>
-    </Switch>
-
-6 - go to MoviesList.js and change the following line
-  
- <a href={`/movie/${movie.id}`} className="btn btn-outline-info" style={{backgroundColor: 'white'}} >More Details</a>
-to
-  
- import {Link} from 'react-router-dom';
+```javascript
+import { BrowserRouter } from 'react-router-dom';
 ...
-<Link to={`/movie/${movie.id}`} params={{ movieId: movie.id }} className="btn btn-outline-info" style={{backgroundColor: 'white'}} >More Details</Link>
+<BrowserRouter>
+    <App />
+</BrowserRouter>), document.getElementById('root'));
+...
+```
 
-7- In App.js add a redirection if the page is not found
+2. Add a route to `mylist`
 
-      import {Route, Switch, Redirect, NavLink } from "react-router-dom";
-      ...
+`App.js`
 
-      <Switch>
-          <Route path="/home" render={props => <MoviesList movies={data} />} />
-          <Route path="/movie/:movieId" render={props => <MovieDetails {...props}/>} />
-          <Route path="/mylist" component={MyList}/>
-          <Route path="/not-found" render={props => <h1>Not found</h1>} />
-          <Redirect to="/not-found" />
-        </Switch>
+```javascript
+import {Route} from "react-router-dom";
+...
+<Route path="/mylist" component={MyList}/>
+```
+
+3. Change the link in the navbar to a `Link` then to a `NavLink`
+
+`Navbar.js`
+
+```javascript
+<a className="nav-item nav-link text-light" href="/mylist">
+  My List
+</a>
+```
+
+to
+
+```javascript
+import {Link} from "react-router-dom";
+...
+<Link className="nav-item nav-link text-light" to="/mylist">My List</Link>
+```
+
+to
+
+```javascript
+import {NavLink} from "react-router-dom";
+...
+<NavLink className="nav-item nav-Nav text-light" to="/mylist">My List</NavLink>
+```
+
+4. change the brand to a regular `Link`
+   `Navbar.js`
+
+```javascript
+<Link className="navbar-brand" href="/">
+  Not IMDB
+</Link>
+```
+
+5. Add the switch and the route to home. Explain `render`. Explain the order in a switch. Explain `exact`.
+
+`App.js`
+
+```javascript
+import { Route, Switch } from "react-router-dom";
+...
+<Switch>
+  <Route path="/mylist" component={MyList} />
+  <Route path="/" render={props => <MoviesList movies={movies} />} />
+</Switch>;
+```
+
+6. Change the link on the card. Show what it's doing (changing the address).
+
+`MovieCard.js`
+
+```javascript
+<a
+  href={`/movie/${movie.id}`}
+  className="btn btn-outline-info"
+  style={{ backgroundColor: "white" }}
+>
+  More Details
+</a>
+```
+
+to
+
+```javascript
+import {Link} from 'react-router-dom';
+...
+
+<Link to={`/movies/${movie.id}`} className="btn btn-outline-info" style={{backgroundColor: 'white'}} >More Details</Link>
+```
+
+7. Add a parametrized route
+
+`App.js`
+
+```javascript
+<Switch>
+  <Route path="/mylist" component={MyList} />
+  <Route
+    path="/movies/:movieId"
+    render={props => <MovieDetails {...props} />}
+  />
+  <Route path="/" render={props => <MoviesList movies={movies} />} />
+</Switch>
+```
+
+8. Use the param in the detail page
+
+`MovieDetail.js`
+
+```javascript
+const movieId = this.props.match.params.movieId;
+const movie = data[movieId - 1];
+```
+
+9. Add a redirect if the page is not found
+
+`App.js`
+
+```javascript
+import { Route, Switch, Redirect } from "react-router-dom";
+...
+
+<Switch>
+    <Route path="/mylist" component={MyList}/>
+    <Route path="/movies/:movieId" render={props => <MovieDetails {...props}/>} />
+    <Route path="/not-found" render={props => <h1>Not found</h1>} />
+    <Route path="/" render={props => <MoviesList movies={data} />} />
+    <Redirect to="/not-found" />
+</Switch>
+```
