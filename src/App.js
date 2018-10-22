@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect, Link, NavLink } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 // Data
@@ -18,7 +18,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route
-            path="/movie/:movieId"
+            path="/movies/:movieId"
             render={props => <MovieDetails {...props} />}
           />
           <Route path="/mylist" component={MyList} />

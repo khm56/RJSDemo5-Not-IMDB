@@ -3,7 +3,8 @@ import data from "./data";
 
 class MoviesDetails extends Component {
   render() {
-    const movie = data[0];
+    const movieId = this.props.match.params.movieId;
+    const movie = data[movieId - 1];
     return (
       <div>
         <div

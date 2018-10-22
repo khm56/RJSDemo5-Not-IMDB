@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
   render() {
     const movie = this.props.movie;
     return (
       <div
-        className="card col-2"
+        className="col-2"
         style={{
           margin: "20px",
           backgroundColor: "white",
@@ -20,13 +21,13 @@ class MovieCard extends Component {
         />
         <div className="card-body">
           <h5 className="card-title">{movie.name}</h5>
-          <a
-            href={`/movies/${movie.id}`}
+          <Link
+            to={`/movies/${movie.id}`}
             className="btn btn-outline-info"
             style={{ backgroundColor: "white" }}
           >
             More Details
-          </a>
+          </Link>
         </div>
       </div>
     );

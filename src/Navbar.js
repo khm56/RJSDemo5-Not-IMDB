@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
@@ -7,13 +8,13 @@ class Navbar extends Component {
         className="navbar navbar-dark"
         style={{ backgroundColor: "#3d585b" }}
       >
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           Not IMDB
-        </a>
+        </Link>
         <div className="navbar">
-          <a className="nav-item nav-link text-light" href="/mylist">
+          <NavLink className="nav-item nav-link text-light" to="/mylist">
             My List
-          </a>
+          </NavLink>
         </div>
       </nav>
     );
