@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect, NavLink } from "react-router-dom";
+import { Route, Switch, Redirect, Link, NavLink } from "react-router-dom";
 import "./App.css";
 
 // Data
@@ -16,6 +16,15 @@ class App extends Component {
     return (
       <div className="bg-light">
         <Navbar />
+        <Switch>
+          <Route
+            path="/movie/:movieId"
+            render={props => <MovieDetails {...props} />}
+          />
+          <Route path="/mylist" component={MyList} />
+          <Route path="/" render={props => <MoviesList movies={movies} />} />
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }

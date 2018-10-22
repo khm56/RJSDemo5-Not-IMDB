@@ -12,7 +12,7 @@ class MoviesDetails extends Component {
         >
           <h3 className="card-header">{movie.name}</h3>
           <img
-            class="card-img-top"
+            className="card-img-top"
             src={movie.image}
             alt=""
             style={{ width: "350px", margin: "auto" }}
