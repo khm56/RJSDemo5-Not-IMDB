@@ -1,4 +1,4 @@
-presentation https://drive.google.com/file/d/1t23T8JKvvLETyPeXSaierahwElUf69Ff/view?usp=sharing
+presentation https://docs.google.com/presentation/d/1oinLmplCEw_zNcolTltn1gSCX6exBLSucOoXjYfxS4Y/
 
 0. Demonstrate the different components (`MyList`, `MovieList`, `MovieDetail`)
 
