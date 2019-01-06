@@ -4,8 +4,9 @@ class MovieCard extends Component {
   render() {
     const movie = this.props.movie;
     return (
+      <div className="col-lg-2 col-md-6 col-12">
       <div
-        className="card col-2"
+        className="card"
         style={{
           margin: "20px",
           backgroundColor: "white",
@@ -28,6 +29,7 @@ class MovieCard extends Component {
             More Details
           </a>
         </div>
+      </div>
       </div>
     );
   }
