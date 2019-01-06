@@ -55,7 +55,7 @@ import {NavLink} from "react-router-dom";
    `Navbar.js`
 
 ```javascript
-<Link className="navbar-brand" href="/">
+<Link className="navbar-brand" to="/">
   Not IMDB
 </Link>
 ```
